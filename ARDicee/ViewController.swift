@@ -99,6 +99,15 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         rollAll()
     }
     
+
+    @IBAction func removeDice(_ sender: UIBarButtonItem) {
+        if !diceArray.isEmpty {
+            for die in diceArray {
+                die.removeFromParentNode()
+            }
+        }
+    }
+    
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
         if anchor is ARPlaneAnchor {
             let planeAnchor = anchor as! ARPlaneAnchor
