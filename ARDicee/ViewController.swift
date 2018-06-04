@@ -66,6 +66,13 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 if let diceNode = diceScene.rootNode.childNode(withName: "Dice", recursively: true) {
                     diceNode.position = SCNVector3(x: hitResults.worldTransform.columns.3.x, y: hitResults.worldTransform.columns.3.y + diceNode.boundingSphere.radius, z: hitResults.worldTransform.columns.3.z)
                     sceneView.scene.rootNode.addChildNode(diceNode)
+                    let randomX = Float(arc4random_uniform(4) + 1) * (Float.pi / 2)
+                    let randomZ = Float(arc4random_uniform(4) + 1) * (Float.pi / 2)
+                    
+                    diceNode.runAction(SCNAction.rotateBy(x: CGFloat(randomX * 5),
+                                                          y: 0,
+                                                          z: CGFloat(randomZ * 5),
+                                                          duration: 0.5))
                 }
             }
         }
